@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import { useDispatch, useSelector } from 'react-redux';
+import './App.css';
+import BalanceForm from './components/BalanceForm';
+
+
+
+export default function App() {
+  const checking = useSelector((state) => state.checking);
+  const savings = useSelector((state) => state.savings);
+  // the above line is the same as this longer form arrow function
+  // const balance = useSelector((state) => {
+  //   return state.balance
+  // })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Bank Account</h1>
+      <h2>Checking: {checking}</h2>
+      <h2>Savings: {savings}</h2>
+      <BalanceForm />
     </div>
   );
 }
 
-export default App;
+
